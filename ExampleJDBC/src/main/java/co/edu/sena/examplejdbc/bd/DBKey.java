@@ -21,22 +21,44 @@ public class DBKey extends DBConnection{
     {
         try {
             connect();
-            String sql = "insert into `key` (id, name, room, count, observation) values(?,?,?,?,?)";
+            String sql = "insert into `key` ( name, room, count, observation) values(?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, key.getId());
-            preparedStatement.setString(2, key.getName());
-            preparedStatement.setString(3, key.getRoom());
-            preparedStatement.setInt(4, key.getCount());
-            preparedStatement.setString(5, key.getObservation());
+            //preparedStatement.setInt(1, key.getId());
+            preparedStatement.setString(1, key.getName());
+            preparedStatement.setString(2, key.getRoom());
+            preparedStatement.setInt(3, key.getCount());
+            preparedStatement.setString(4, key.getObservation());
             preparedStatement.executeUpdate();
             preparedStatement.close();
             
         } catch (SQLException e) {
-            MessageUtils.showErrorMessage("Error al insertar informacion" + e.getMessage());
+            MessageUtils.showErrorMessage("Error al insertar datos" + e.getMessage());
+            
         }
         finally{
             disconnect();
         }
     }
-    
+    public void update (Key key)
+    {
+        try {
+            connect();
+            String sql = "update `key` set name = ?,  room = ?,  count = ?,  observation = ? where id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, key.getName());
+            preparedStatement.setString(2, key.getRoom());
+            preparedStatement.setInt(3, key.getCount());
+            preparedStatement.setString(4, key.getObservation());
+            preparedStatement.setInt(5, key.getId());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            
+        } catch (SQLException e) {
+            MessageUtils.showErrorMessage("Error al actualizar datos" + e.getMessage());
+        }
+        finally{
+            disconnect();
+        }
+        
+    }
 }

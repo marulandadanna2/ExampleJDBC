@@ -13,10 +13,21 @@ import co.edu.sena.examplejdbc.model.Key;
  */
 public class TestKey {
     public static void main(String[] args) {
-       DBKey dBKey = new DBKey();
+       DBKey dBkey = new DBKey();
         
        //insertar
        Key key = new Key(6,"DANNA", "SALA INFORMATICA", 3, "LLAVERO CON DOS LLAVES");
-       dBKey.insert(key);
+       //dBkey.insert(key);
+       
+       //actualizar
+        key.setId(6);
+        key.setName("SENNOVA");                                                                                           
+        key.setRoom("Aula sennova");
+        key.setCount(1);
+        key.setObservation("Llave sola");
+        dBkey.update(key);
     }
+    
+    
+    
 }

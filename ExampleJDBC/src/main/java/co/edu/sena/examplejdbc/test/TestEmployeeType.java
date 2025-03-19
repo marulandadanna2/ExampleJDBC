@@ -19,10 +19,12 @@ public class TestEmployeeType {
         //insertar
         EmployeeType employeeType = new EmployeeType(6, "SUBDIRECTOR");
         dBEmployeeType.insert(employeeType);
+        
         //actualizar
         //   employeeType.setId(5);
         //  employeeType.setDescript("COORDINADOR");
         //   dBEmployeeType.update(employeeType);
+        
         // Eliminar
         // dBEmployeeType.delete(5);
         //consultar todos
