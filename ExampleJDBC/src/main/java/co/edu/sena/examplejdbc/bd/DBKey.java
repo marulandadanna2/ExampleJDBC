@@ -10,6 +10,8 @@ import co.edu.sena.examplejdbc.utils.MessageUtils;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Fecha: 13/03/2025
@@ -81,4 +83,35 @@ public class DBKey extends DBConnection{
             disconnect();
         }
     }
+    
+    public List<Key> findAll()
+    {
+        List<Key> results = new ArrayList<>();
+        try {
+            connect();
+            String sql = "Select * from `key`";
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            
+            while (resultSet.next())
+            {
+                Key key = new Key();
+                key.setId(resultSet.getInt("id"));
+                key.setName(resultSet.getString("name"));
+                key.setRoom(resultSet.getString("room"));
+                key.setCount(resultSet.getInt("count"));
+                key.setObservation(resultSet.getString("observation"));
+                results.add(key);
+            }
+            
+        } catch (SQLException e) {
+            MessageUtils.showErrorMessage("Error al hacer consulta" + e.getMessage());
+        }
+        finally{
+            disconnect();
+        }
+        
+        return results;
+    }
 }
+

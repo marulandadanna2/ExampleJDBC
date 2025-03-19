@@ -6,6 +6,7 @@ package co.edu.sena.examplejdbc.test;
 
 import co.edu.sena.examplejdbc.bd.DBKey;
 import co.edu.sena.examplejdbc.model.Key;
+import java.util.List;
 
 /**
  *
@@ -28,7 +29,14 @@ public class TestKey {
         //dBkey.update(key);
         
         //Eliminar
-        dBkey.delete(8);
+        //dBkey.delete(8);
+        
+        //consultar todos 
+        List<Key> listKey = dBkey.findAll();
+        for (Key e : listKey) {
+            System.out.println("id: " + e.getId() + "name: " + e.getName() + "room: " + e.getRoom() + "count: " + e.getCount()
+            + "observation: " + e.getObservation());
+        }
         
         
     }
