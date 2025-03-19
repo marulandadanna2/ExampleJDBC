@@ -113,5 +113,38 @@ public class DBKey extends DBConnection{
         
         return results;
     }
+    
+    public Key finById(int id)
+    {
+        Key key = null;
+        try {
+            connect();
+            String sql = "Select * from `key` where id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            if(resultSet.next())
+            {
+                key = new Key();
+                key.setId(resultSet.getInt("id"));
+                key.setName(resultSet.getString("name"));
+                key.setRoom(resultSet.getString("room"));
+                key.setCount(resultSet.getInt("count"));
+                key.setObservation(resultSet.getString("observation"));               
+                
+            }
+            resultSet.close();
+            preparedStatement.close();
+            
+        } catch (SQLException e) {
+            MessageUtils.showErrorMessage("Error al consultar" + e.getMessage());
+            
+        }
+        finally{
+            disconnect();
+        }
+        return key;
+    }
 }
 

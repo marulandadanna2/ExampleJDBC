@@ -32,15 +32,23 @@ public class TestKey {
         //dBkey.delete(8);
         
         //consultar todos 
-        List<Key> listKey = dBkey.findAll();
-        for (Key e : listKey) {
-            System.out.println("id: " + e.getId() + "name: " + e.getName() + "room: " + e.getRoom() + "count: " + e.getCount()
-            + "observation: " + e.getObservation());
+        //List<Key> listKey = dBkey.findAll();
+        //for (Key e : listKey) {
+            //System.out.println("id: " + e.getId() + "name: " + e.getName() + "room: " + e.getRoom() + "count: " + e.getCount()
+           // + "observation: " + e.getObservation());
+            
+            
+        //Consultar 
+            System.out.println("***************************");
+            Key key2 = dBkey.finById(2);
+            System.out.println("id: " + key2.getId() + "name: " + key2.getName() + "room: " + key2.getRoom() + 
+                    "count: " + key2.getClass() + "observation: " + key2.getObservation());
         }
         
-        
+        //Consultar por ID
+    
     }
     
     
     
-}
+
