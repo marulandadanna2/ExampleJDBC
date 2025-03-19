@@ -8,6 +8,7 @@ import co.edu.sena.examplejdbc.model.EmployeeType;
 import co.edu.sena.examplejdbc.model.Key;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -60,5 +61,24 @@ public class DBKey extends DBConnection{
             disconnect();
         }
         
+    }
+    
+    public void delete(int id)
+    {
+        try {
+            connect();
+            String sql = "delete from `key`where id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            
+            
+        } catch (SQLException e) {
+            MessageUtils.showErrorMessage("Error al eliminar datos" + e.getMessage());
+        }
+        finally{
+            disconnect();
+        }
     }
 }

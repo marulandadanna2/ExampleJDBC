@@ -20,12 +20,17 @@ public class TestKey {
        //dBkey.insert(key);
        
        //actualizar
-        key.setId(6);
-        key.setName("SENNOVA");                                                                                           
-        key.setRoom("Aula sennova");
-        key.setCount(1);
-        key.setObservation("Llave sola");
-        dBkey.update(key);
+        //key.setId(6);
+        //key.setName("SENNOVA");                                                                                           
+        //key.setRoom("Aula sennova");
+        //key.setCount(1);
+        //key.setObservation("Llave sola");
+        //dBkey.update(key);
+        
+        //Eliminar
+        dBkey.delete(8);
+        
+        
     }
     
     

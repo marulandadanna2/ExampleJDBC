@@ -27,6 +27,8 @@ public class TestEmployeeType {
         
         // Eliminar
         // dBEmployeeType.delete(5);
+        
+
         //consultar todos
         List<EmployeeType> listEmployeeType = dBEmployeeType.findAll();
         for (EmployeeType e : listEmployeeType) {
