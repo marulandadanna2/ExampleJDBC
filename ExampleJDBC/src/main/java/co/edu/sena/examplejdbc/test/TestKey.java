@@ -38,15 +38,14 @@ public class TestKey {
            // + "observation: " + e.getObservation());
             
             
-        //Consultar 
+        //Consultar por ID
             System.out.println("***************************");
             Key key2 = dBkey.finById(2);
             System.out.println("id: " + key2.getId() + "name: " + key2.getName() + "room: " + key2.getRoom() + 
                     "count: " + key2.getClass() + "observation: " + key2.getObservation());
         }
         
-        //Consultar por ID
-    
+        
     }
     
     

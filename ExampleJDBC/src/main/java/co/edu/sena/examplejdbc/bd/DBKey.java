@@ -35,7 +35,7 @@ public class DBKey extends DBConnection{
             preparedStatement.close();
             
         } catch (SQLException e) {
-            MessageUtils.showErrorMessage("Error al insertar datos" + e.getMessage());
+            MessageUtils.showErrorMessage("Error al insertar llave" + e.getMessage());
             
         }
         finally{
@@ -57,7 +57,7 @@ public class DBKey extends DBConnection{
             preparedStatement.close();
             
         } catch (SQLException e) {
-            MessageUtils.showErrorMessage("Error al actualizar datos" + e.getMessage());
+            MessageUtils.showErrorMessage("Error al actualizar llave" + e.getMessage());
         }
         finally{
             disconnect();
@@ -77,7 +77,7 @@ public class DBKey extends DBConnection{
             
             
         } catch (SQLException e) {
-            MessageUtils.showErrorMessage("Error al eliminar datos" + e.getMessage());
+            MessageUtils.showErrorMessage("Error al eliminar llave" + e.getMessage());
         }
         finally{
             disconnect();
@@ -105,7 +105,7 @@ public class DBKey extends DBConnection{
             }
             
         } catch (SQLException e) {
-            MessageUtils.showErrorMessage("Error al hacer consulta" + e.getMessage());
+            MessageUtils.showErrorMessage("Error al hacer consultar las llaves" + e.getMessage());
         }
         finally{
             disconnect();
@@ -138,7 +138,7 @@ public class DBKey extends DBConnection{
             preparedStatement.close();
             
         } catch (SQLException e) {
-            MessageUtils.showErrorMessage("Error al consultar" + e.getMessage());
+            MessageUtils.showErrorMessage("Error al consultar la llave" + e.getMessage());
             
         }
         finally{
