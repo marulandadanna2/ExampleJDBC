@@ -9,6 +9,7 @@ import co.edu.sena.examplejdbc.controllers.IEmployeeTypeController;
 import co.edu.sena.examplejdbc.model.EmployeeType;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,6 +20,7 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
     private IEmployeeTypeController employeeTypeController = new EmployeeTypeController();
     /**
      * Creates new form JFrameEmployeeType
+     * 
      */
     public JFrameEmployeeType() {
         initComponents();
@@ -56,6 +58,8 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollBar1 = new javax.swing.JScrollBar();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabelTitle = new javax.swing.JLabel();
         jLabelID = new javax.swing.JLabel();
         jTextFieldID = new javax.swing.JTextField();
@@ -68,20 +72,40 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableEmployeeType = new javax.swing.JTable();
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelTitle.setText("Tipos de empleado");
 
+        jLabelID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabelID.setText("id:");
 
+        jTextFieldID.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(204, 204, 204), null, null));
         jTextFieldID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldIDActionPerformed(evt);
             }
         });
 
+        jLabelDescript.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabelDescript.setText("Descripcion:");
 
+        jTextFieldDescript.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(204, 204, 204), null, null));
+
+        jButtonInsert.setBackground(new java.awt.Color(181, 224, 197));
+        jButtonInsert.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonInsert.setText("Crear");
         jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,11 +113,33 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
             }
         });
 
+        jButtonUpdate.setBackground(new java.awt.Color(196, 224, 255));
+        jButtonUpdate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonUpdate.setText("Modificar");
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
 
+        jButtonDelete.setBackground(new java.awt.Color(172, 72, 72));
+        jButtonDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButtonDelete.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDelete.setText("Eliminar");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
 
+        jButtonClean.setBackground(new java.awt.Color(239, 239, 239));
         jButtonClean.setText("Limpiar");
+
+        jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane1MouseClicked(evt);
+            }
+        });
 
         jTableEmployeeType.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,7 +170,7 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelID)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                                 .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(14, 14, 14))
                             .addGroup(layout.createSequentialGroup()
@@ -135,7 +181,7 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButtonDelete)
-                                .addGap(94, 94, 94)
+                                .addGap(84, 84, 84)
                                 .addComponent(jButtonClean))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelDescript)
@@ -160,9 +206,9 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
                     .addComponent(jButtonUpdate)
                     .addComponent(jButtonDelete)
                     .addComponent(jButtonClean))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -176,14 +222,62 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
     private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
         try {
             EmployeeType employeeType = new EmployeeType();
-            employeeType.setDescript(jTextFieldDescript.getText());
+            employeeType.setDescript(jTextFieldDescript.getText().toUpperCase());
             employeeTypeController.insert(employeeType);
             MessageUtils.showInfoMessage("Tipo de empleado creado exitosamente");
             fillTable();
+            clear();
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
         }
     }//GEN-LAST:event_jButtonInsertActionPerformed
+
+    private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
+        int rowSelected = jTableEmployeeType.getSelectedRow();
+        if (rowSelected != -1) 
+        {
+            String idSelected = jTableEmployeeType.getValueAt(rowSelected, 0).toString();
+            String descriptSelected = jTableEmployeeType.getValueAt(rowSelected, 1).toString();
+            
+            
+            jTextFieldID.setText(idSelected);
+            jTextFieldDescript.setText(descriptSelected);
+            jButtonInsert.setEnabled(false);
+            jButtonDelete.setEnabled(true);
+            jButtonUpdate.setEnabled(true);
+        }
+        
+    }//GEN-LAST:event_jScrollPane1MouseClicked
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        try {
+            EmployeeType employeeType = new EmployeeType();
+            employeeType.setId(Integer.parseInt(jTextFieldID.getText()));
+            employeeType.setDescript(jTextFieldDescript.getText().toUpperCase());
+            employeeTypeController.update(employeeType);
+            MessageUtils.showInfoMessage("Tipo de empleado modificado exitosamente");
+            fillTable();
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage(e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        try {
+            int option = JOptionPane.showConfirmDialog(rootPane, "Esta seguro de eliminar el registro","Confirmacion",
+                    JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION)
+            {
+                employeeTypeController.delete(Integer.parseInt(jTextFieldID.getText()));
+                MessageUtils.showInfoMessage("tipo de empleado eliminado exitosamente");
+                fillTable();
+            }
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage(e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     public void clear()
     {
@@ -240,6 +334,8 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTableEmployeeType;
     private javax.swing.JTextField jTextFieldDescript;
     private javax.swing.JTextField jTextFieldID;
