@@ -4,6 +4,8 @@
  */
 package co.edu.sena.examplejdbc.model;
 
+import javax.swing.JTextField;
+
 /**
  * Fecha:13/03/2025
  * @author Danna
@@ -65,6 +67,15 @@ public class Key {
 
     public void setObservation(String observation) {
         this.observation = observation;
+    }
+
+    public void setCount(JTextField jTextFieldCount) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String toString() {
+        return  name;
     }
     
     

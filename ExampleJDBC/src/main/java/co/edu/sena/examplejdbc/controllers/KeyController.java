@@ -13,86 +13,73 @@ import java.util.List;
  *
  * @author Aprendiz
  */
-public class KeyController implements IKeyController{
-    
+public class KeyController implements IKeyController {
+
     private DBKey dbk = new DBKey();
 
     @Override
     public void insert(Key key) throws Exception {
-        if(key == null)
-                {
-                 throw new Exception("El tipo de llave es nulo");
-                }
-        if("".equals(key.getName()))
-        {
+        if (key == null) {
+            throw new Exception("El tipo de llave es nulo");
+        }
+        if ("".equals(key.getName())) {
             throw new Exception("El nombre es obligatorio");
         }
-        
-        if("".equals(key.getRoom()))
-        {
+
+        if ("".equals(key.getRoom())) {
             throw new Exception("La sala es obligatoria");
         }
-        
-        if("".equals(key.getCount()))
-        {
+
+        if ("".equals(key.getCount())) {
             throw new Exception("El numero de llaves es obligatorio");
         }
-        
+
         //insertar
         dbk.insert(key);
     }
 
     @Override
     public void update(Key key) throws Exception {
-        if(key == null)
-                {
-                 throw new Exception("El tipo de llave es nulo");
-                }
-        
-        if(key.getId()== 0)
-        {
+        if (key == null) {
+            throw new Exception("El tipo de llave es nulo");
+        }
+
+        if (key.getId() == 0) {
             throw new Exception("El id es obligatorio");
         }
-        if("".equals(key.getName()))
-        {
+        if ("".equals(key.getName())) {
             throw new Exception("El nombre es obligatorio");
         }
-        
-        if("".equals(key.getRoom()))
-        {
+
+        if ("".equals(key.getRoom())) {
             throw new Exception("La sala es obligatoria");
         }
-        
-        if("".equals(key.getCount()))
-        {
+
+        if ("".equals(key.getCount())) {
             throw new Exception("El numero de llaves es obligatorio");
         }
-        
-       //consultar si el key existe en la bd
+
+        //consultar si el key existe en la bd
         Key keyExist = dbk.finById(key.getId());
-        if(keyExist == null)
-        {
+        if (keyExist == null) {
             throw new Exception("El tipo de llave no existe");
         }
-        
+
         //actualizar
         dbk.update(key);
     }
 
     @Override
     public void delete(int id) throws Exception {
-        if(id == 0)
-        {
+        if (id == 0) {
             throw new Exception("El id es obligatorio");
         }
         //consultar si el key existe en la bd
         Key keyExist = dbk.finById(id);
-        if( keyExist == null)
-        {
+        if (keyExist == null) {
             throw new Exception("El tipo de llave no existe");
         }
-        
-        
+
         //Eliminar
         dbk.delete(id);
     }
@@ -104,11 +91,10 @@ public class KeyController implements IKeyController{
 
     @Override
     public Key finById(int id) throws Exception {
-        if(id == 0)
-        {
+        if (id == 0) {
             throw new Exception("El id es obligatorio");
         }
         return dbk.finById(id);
     }
-    
+
 }

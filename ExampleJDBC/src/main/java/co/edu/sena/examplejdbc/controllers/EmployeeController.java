@@ -14,6 +14,10 @@ import java.util.List;
  */
 public class EmployeeController implements IEmployeeController{
 
+    public static List<Employee> findAll() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     private DBEmployee dbe = new DBEmployee();
 
     @Override
