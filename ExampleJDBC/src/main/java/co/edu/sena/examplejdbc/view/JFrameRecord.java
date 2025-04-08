@@ -37,6 +37,7 @@ public class JFrameRecord extends javax.swing.JFrame {
         initComponents();
         fillCombos();
         fillTable();
+       
     }
     
     public void fillCombos()
@@ -44,14 +45,15 @@ public class JFrameRecord extends javax.swing.JFrame {
         try {
             List<Employee> employees = EmployeeController.findAll();
             DefaultComboBoxModel modelEmployee  = new DefaultComboBoxModel();
-            j.setModel(modelEmployee);
+            jComboBoxEmployee.setModel(modelEmployee);
             modelEmployee.addAll(employees);
             
             List<Key> k = keyController.findAll();
             DefaultComboBoxModel modelKeys = new DefaultComboBoxModel();
             jComboBoxKey.setModel(modelKeys);
             modelKeys.addAll(k);
-            jComboBoxKey
+            jComboBoxKey.setSelectedIndex(0);
+            
             
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
@@ -85,6 +87,9 @@ public class JFrameRecord extends javax.swing.JFrame {
                 rows[2] = r.getStatus();
                 model.addRow(rows);
             }
+            jButtonInsert.setEnabled(true);
+            jButtonUpdate.setEnabled(false);
+            jButtonDelete.setEnabled(false);
                     
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
@@ -126,6 +131,7 @@ public class JFrameRecord extends javax.swing.JFrame {
         jTableRecords = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Registro");
@@ -390,7 +396,7 @@ public class JFrameRecord extends javax.swing.JFrame {
                     JOptionPane.YES_NO_OPTION);
             if(option == JOptionPane.YES_OPTION)
             {
-                recordController.delete(Long.parseLong(jTextFieldId.getText()));
+                recordController.delete(Integer.parseInt(jTextFieldId.getText()));
                 MessageUtils.showInfoMessage("Registro eliminado exitosamente");
                 fillTable();
             }
@@ -504,5 +510,6 @@ public class JFrameRecord extends javax.swing.JFrame {
     private com.github.lgooddatepicker.components.TimePicker timePickerStart;
     // End of variables declaration//GEN-END:variables
 
+    
     
 }

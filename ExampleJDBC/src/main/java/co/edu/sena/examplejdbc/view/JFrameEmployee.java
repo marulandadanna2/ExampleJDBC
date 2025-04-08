@@ -100,6 +100,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
         jButtonClean = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabelTitle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabelTitle.setText("Empleado");
